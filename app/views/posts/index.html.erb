@@ -1,0 +1,21 @@
+<html>
+<head>
+	<title>Post lists</title>
+</head>
+<body>
+	<%= @posts.each do |post| %>
+	<div>
+		<%= post.title %>
+		<br>
+		<%= post.autor %>
+		<br>
+		<%= post.description %>
+		<br>
+		$<%= post.price %>
+	</div>
+	<br>
+	<br>
+	<% end %>
+
+</body>
+</html>
