@@ -3,17 +3,16 @@
 	<title>Post lists</title>
 </head>
 <body>
-	<%= @posts.each do |post| %>
+	<% @posts.each do |post| %>
 	<div>
 		<%= post.title %>
 		<br>
-		<%= post.autor %>
+		<%= post.author %>
 		<br>
 		<%= post.description %>
 		<br>
 		$<%= post.price %>
 	</div>
-	<br>
 	<br>
 	<% end %>
 

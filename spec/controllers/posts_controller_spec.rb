@@ -10,8 +10,10 @@ describe PostsController do
   end
   describe "#new" do 
   	it "makes a new post" do
-  	  Post.should_receive(:new)
-  	  post_controller.new
+  	  count1 = Post.all.count
+  	  Post.create!
+  	  count2 = Post.all.count
+  	  expect(count1 + 1).to eq(count2)
   	end
   end
   describe "#copy" do
