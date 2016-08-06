@@ -3,7 +3,7 @@
 	<title>Edit Post </title>
 </head>
 <body>
-	<%= form_for(:post, url: update_post_path(@post.id), method: :put) do |f| %>
+	<%= form_for(@post, url: update_post_path(@post.id), method: :put) do |f| %>
 	Title
 	<br>
 	<%= f.text_field :title, placeholder: @post.title %>

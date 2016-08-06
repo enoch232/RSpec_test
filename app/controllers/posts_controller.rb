@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-
+  before_action :find_post, only: [:edit, :update]
   def index
   	@posts = Post.order(:price)
   end
@@ -20,12 +20,11 @@ class PostsController < ApplicationController
   	end	
   end
   def edit
-  	@post = Post.find(params[:id])
   end
-  def update
-    @post = Post.find(params[:id])
-  	if @post.update_attributes(params.require(:post).permit(:title, :description, :author, :price))
+  def update 
+  	if @post.update_attributes(post_params)
   	  respond_to do |format|
+        flash[:notice] = "Successfully updated"
         format.html{ redirect_to root_path}
         format.json{}
   	  end
@@ -39,5 +38,12 @@ class PostsController < ApplicationController
   end
 
   def copy
+  end
+  private
+  def find_post
+    @post = Post.find(params[:id])
+  end
+  def post_params
+    params.require(:post).permit(:title, :description, :author, :price)
   end
 end

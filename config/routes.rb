@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   scope 'posts' do
   	post '/new' => 'posts#new', as: "new_post"
   	get '/:id/edit' => 'posts#edit', as: "edit_post"
-  	put '/:id/update' => 'posts#update', as: "update_post"
+  	put '/:id' => 'posts#update', as: "update_post"
   end
 end

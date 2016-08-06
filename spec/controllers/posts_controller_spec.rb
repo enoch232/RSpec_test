@@ -24,5 +24,13 @@ describe PostsController do
   describe "#copy" do
   	it "copies a post"
   end
-
+  describe "#update" do
+    post = FactoryGirl.create(:post)
+    it "should update title correctly" do
+      put :update, id: post.id, post: {title: "hello"}
+      post.reload
+      expect(post.title).to eq("hello")
+    end
+    it "should update all correctly"
+  end
 end

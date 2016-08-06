@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <% if flash[:notice] %>
+    <%= flash[:notice] %>
+    <% end %>
   	<div>
   		<%= link_to "Create New Book", new_post_path, method: :post %>
   	</div>
