@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'rails-controller-testing'
 describe PostsController do
   let(:post_controller) {PostsController.new}
   describe "#index" do
