@@ -1,5 +1,5 @@
 require 'spec_helper'
-
+require 'rails-controller-testing'
 describe PostsController do
   let(:post_controller) {PostsController.new}
   describe "#index" do
@@ -17,8 +17,11 @@ describe PostsController do
   	end
   end
   describe "#edit" do 
-  	it "redirects to edit template" do 
-  	  pending "needs edit template"
+  	it "should return respones of 200" do 
+      post = FactoryGirl.create(:post)
+      get :edit, id: post.id
+      puts response.inspect
+      expect(response.code).to eq("200")
   	end
   end
   describe "#copy" do
@@ -31,6 +34,13 @@ describe PostsController do
       post.reload
       expect(post.title).to eq("hello")
     end
-    it "should update all correctly"
+    it "should update all correctly" do
+      put :update, id: post.id, post: {title: "cool", description: "its funny", author: "no one", price: 10}
+      post.reload
+      expect(post.title).to eq("cool")
+      expect(post.description).to eq("its funny")
+      expect(post.author).to eq("no one")
+      expect(post.price).to eq(10)
+    end
   end
 end
