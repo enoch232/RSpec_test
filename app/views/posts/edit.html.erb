@@ -1,0 +1,27 @@
+<html>
+<head>
+	<title>Edit Post </title>
+</head>
+<body>
+	<%= form_for(:post, url: update_post_path(@post.id), method: :put) do |f| %>
+	Title
+	<br>
+	<%= f.text_field :title, placeholder: @post.title %>
+	<br>
+	Author
+	<br>
+	<%= f.text_field :author, placeholder: @post.author  %>
+	<br>
+	Description
+	<br>
+	<%= f.text_field :description, placeholder: @post.description  %>
+	<br>
+	Price
+	<br>
+	<%= f.text_field :price, placeholder: @post.price  %>
+	<br>
+	<%= f.submit "Update" %>
+	<% end %>
+
+</body>
+</html>

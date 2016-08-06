@@ -4,6 +4,8 @@
 </head>
 <body>
 	<% @posts.each do |post| %>
+
+	<%= link_to edit_post_path(post) do %>
 	<div>
 		<%= post.title %>
 		<br>
@@ -13,6 +15,7 @@
 		<br>
 		$<%= post.price %>
 	</div>
+	<% end %>
 	<br>
 	<% end %>
 

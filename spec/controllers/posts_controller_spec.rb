@@ -11,9 +11,14 @@ describe PostsController do
   describe "#new" do 
   	it "makes a new post" do
   	  count1 = Post.all.count
-  	  Post.create!
+  	  Post.create
   	  count2 = Post.all.count
   	  expect(count1 + 1).to eq(count2)
+  	end
+  end
+  describe "#edit" do 
+  	it "redirects to edit template" do 
+  	  pending "needs edit template"
   	end
   end
   describe "#copy" do
