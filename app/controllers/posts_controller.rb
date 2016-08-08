@@ -38,6 +38,18 @@ class PostsController < ApplicationController
   end
 
   def copy
+    if params[:id]
+      @post_original = Post.find(params[:id])
+      @post = Post.new
+      @post.title = @post_original.title
+      @post.author = @post_original.author
+      @post.description = @post_original.description
+      @post.price = @post_original.price
+      flash[:notice] = "Successfully copied!"
+    else
+      flash[:notice] = "Failed to copy!"
+    end
+    redirect_to root_path
   end
   private
   def find_post

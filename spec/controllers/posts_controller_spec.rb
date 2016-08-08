@@ -19,12 +19,19 @@ describe PostsController do
   	it "should return respones of 200" do 
       post = FactoryGirl.create(:post)
       get :edit, id: post.id
-      puts response.inspect
       expect(response.code).to eq("200")
   	end
   end
   describe "#copy" do
-  	it "copies a post"
+  	it "copies a post" do
+      @post = FactoryGirl.create(:post)
+      put :update, id: @post.id, post: {title: "title 1", description: "description 1", author: "author 1", price: 3}
+      @post.reload
+      copied_post = post :copy, id: @post.id
+      puts "PUTS #{copied_post}"
+
+      expect(response.code).to eq("302")
+    end
   end
   describe "#update" do
     post = FactoryGirl.create(:post)

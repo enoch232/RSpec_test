@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   	post '/new' => 'posts#new', as: "new_post"
   	get '/:id/edit' => 'posts#edit', as: "edit_post"
   	put '/:id' => 'posts#update', as: "update_post"
+  	post '/:id/copy' => 'posts#copy', as: "copy_post"
   end
 end
