@@ -50,6 +50,12 @@ describe PostsController do
     end
   end
   describe "#destroy" do
-    it "deletes a post"
+    post = FactoryGirl.create(:post)
+    it "deletes a post" do
+      expect{Post.find(post.id)}.to_not raise_error
+      delete :destroy, id: post.id
+      #should raise_error, where it cant find the post
+      expect{Post.find(post.id)}.to raise_error
+    end
   end
 end
