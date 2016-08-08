@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :find_post, only: [:edit, :update]
+  before_action :find_post, only: [:edit, :update, :destroy]
   def index
   	@posts = Post.order(:price)
   end
@@ -45,10 +45,15 @@ class PostsController < ApplicationController
       @post.author = @post_original.author
       @post.description = @post_original.description
       @post.price = @post_original.price
+      @post.save
       flash[:notice] = "Successfully copied!"
     else
       flash[:notice] = "Failed to copy!"
     end
+    redirect_to root_path
+  end
+  def destroy
+    @post.destroy
     redirect_to root_path
   end
   private

@@ -16,6 +16,8 @@
 		$<%= post.price %>
 	</div>
 	<% end %>
+	<%= link_to "copy", copy_post_path(post.id), method: :post %>
+	<%= link_to "delete", delete_post_path(post.id), method: :delete %>
 	<br>
 	<% end %>
 

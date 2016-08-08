@@ -28,7 +28,7 @@ describe PostsController do
       put :update, id: @post.id, post: {title: "title 1", description: "description 1", author: "author 1", price: 3}
       @post.reload
       copied_post = post :copy, id: @post.id
-      puts "PUTS #{copied_post}"
+      #puts "PUTS #{copied_post}"
 
       expect(response.code).to eq("302")
     end
@@ -48,5 +48,8 @@ describe PostsController do
       expect(post.author).to eq("no one")
       expect(post.price).to eq(10)
     end
+  end
+  describe "#destroy" do
+    it "deletes a post"
   end
 end
