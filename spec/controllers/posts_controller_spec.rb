@@ -29,7 +29,6 @@ describe PostsController do
       @post.reload
       copied_post = post :copy, id: @post.id
       #puts "PUTS #{copied_post}"
-
       expect(response.code).to eq("302")
     end
   end
